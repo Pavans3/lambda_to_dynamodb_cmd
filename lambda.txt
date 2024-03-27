@@ -15,7 +15,7 @@ def lambda_handler(event, context):
         response = table.put_item(Item=items_to_insert)
         return {
             'statusCode': 200,
-            'body': json.dumps('Hello from Lambda!')
+            'body': json.dumps('items inserted suceesfully')
         }
     except Exception as e:
         print(e)
