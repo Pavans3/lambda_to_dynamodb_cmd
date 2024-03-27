@@ -1,0 +1,5 @@
+{
+  "Hello": "i'm learing the lambda and dynamodb",
+  "userid": "your_user_id_here"
+}
+
