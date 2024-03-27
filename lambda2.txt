@@ -1,0 +1,26 @@
+import json
+import boto3
+
+def lambda_handler(event, context):
+    print(event["userid"])
+    dynamodb = boto3.resource("dynamodb")
+    table = dynamodb.Table("UserVideoHistory")
+    items_to_insert = {
+        'userid':event["userid"],
+        'user_name':event["user_name"],
+        'user_location':event["user_location"]
+    }
+    
+    try:
+        response = table.put_item(Item=items_to_insert)
+        return {
+            'statusCode': 200,
+            'body': json.dumps('items inserted successfully!')
+        }
+    except Exception as e:
+        print(e)
+        return {
+            'statusCode': 500,
+            'body': json.dumps('Error while inserting data into DynamoDB!')
+        }
+
